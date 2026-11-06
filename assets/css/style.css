@@ -1,0 +1,160 @@
+/* Reset Dasar & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a1a24;
+    color: #ffffff;
+    padding: 30px;
+}
+
+/* Container utama halaman */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Kotak untuk Form Login & CRUD */
+.auth-container, .form-container {
+    max-width: 450px;
+    margin: 60px auto;
+    background-color: #242432;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #4ade80;
+    margin-bottom: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Desain Inputan Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a1a24;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4ade80;
+}
+
+/* Tombol Utama (Hijau khas Cuan) */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4ade80;
+    color: #1a1a24;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #22c55e;
+    color: white;
+}
+
+/* Tombol Hapus / Logout (Merah) */
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+/* Tombol Batal / Kembali (Abu-abu) */
+.btn-secondary {
+    background-color: #4b5563;
+    color: white;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #374151;
+}
+
+/* Bagian Header Dashboard */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #242432;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* Desain Tabel Data Investasi */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #242432;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #2d2d3f;
+    color: #4ade80;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+tr {
+    border-bottom: 1px solid #374151;
+}
+
+tr:hover {
+    background-color: #2d2d3f;
+}
+
+/* Status profit positif */
+.cuan {
+    color: #4ade80;
+    font-weight: bold;
+}
