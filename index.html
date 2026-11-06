@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasbord Investasi</title>
+    <link href="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h2>Portofolio Investasi Barang Kelompok</h2>
+        <a href="login.html" class="btn-danger">logout</a>
+    </header>
+    
+    <div style="margin-top:20px ;">
+        <a href="tambah.html" class="btn" style="width: auto;">+ tambah aset baru</a>
+    </div>
+<table>
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Kategori</th>
+                    <th>Harga Beli</th>
+                    <th>Harga Sekarang</th>
+                    <th>Estimasi Profit/Loss</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dummy data contoh tampilan tabel -->
+                <tr>
+                    <td>Emas Logam Mulia 10 Gram</td>
+                    <td>Logam Mulia</td>
+                    <td>Rp 14.000.000</td>
+                    <td>Rp 15.500.000</td>
+                    <td class="cuan">+ Rp 1.500.000</td>
+                    <td>
+                        <a href="edit.html" class="btn" style="width: auto; padding: 5px 10px; font-size: 13px;">Edit</a> | 
+                        <a href="#" class="btn-danger action-hapus">Hapus</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sepatu Nike Air Jordan 1 OG</td>
+                    <td>Sneakers Koleksi</td>
+                    <td>Rp 3.500.000</td>
+                    <td>Rp 3.200.000</td>
+                    <td class="btn-danger" style="text-align: left; padding: 15px;">- Rp 300.000</td>
+                    <td>
+                        <a href="edit.html" class="btn" style="width: auto; padding: 5px 10px; font-size: 13px;">Edit</a> | 
+                        <a href="#" class="btn-danger action-hapus">Hapus</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
