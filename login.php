@@ -1,12 +1,12 @@
 <?php
 session_start();
-require 'config/koneksi.php';
-
-// Jika sudah login, langsung lempar ke dashboard
-if (isset($_SESSION['login'])) {
-    header("Location: index.php");
+// Jika tidak ada tanda session login, TENDANG balik ke halaman login!
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
     exit;
 }
+require 'config/koneksi.php';
+// ... sisa kode tabel HTML di bawahnya ...
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
