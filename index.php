@@ -21,7 +21,7 @@ $result = mysqli_query($conn, "SELECT * FROM investasi_barang ORDER BY id DESC")
 <body>
     <div class="container">
         <header>
-            <h2>Dashboard Aplikasi Investasi Barang (IB) (Halo, <?= htmlspecialchars($_SESSION['user']); ?>!)</h2>
+            <h2>Dashboard Aplikasi Investasi Barang (IB)</h2>
             <a href="logout.php" class="btn-danger">Logout</a>
         </header>
 
