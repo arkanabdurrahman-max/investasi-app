@@ -29,11 +29,9 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="auth-container">
-    <h1 class="text-center" style="margin-bottom: 5px; color: #2ecc71; font-size: 28px; font-weight: bold;">IB</h1>
-    <h3 class="text-center" style="color: aliceblue; font-size: 14px; margin-bottom: 20px; font-weight: normal;">Aplikasi Investasi Barang</h3>
-    <h2 class="text-center" style="margin-bottom: 5px; color: aliceblue; font-size: 18px; margin-top: 15px;">Selamat Datang</h2>
-    <p class="text-center" style="color: aliceblue; font-size: 13px; margin-bottom: 25px;">Silahkan masuk untuk melanjutkan</p>
+    <div class="auth-container">
+        <h1 class="text-center" style="margin-bottom: 5px; color: #2ecc71; font-size: 28px; font-weight: bold;">IB</h1>
+        <p class="text-center" style="color: #9ca3af; font-size: 14px; margin-bottom: 25px;">Aplikasi Investasi Barang</p>
         
         <?php if (isset($error)) : ?>
             <p style="color: #ef4444; text-align: center; margin-bottom: 15px; font-weight: bold;">
