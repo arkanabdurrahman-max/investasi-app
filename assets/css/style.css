@@ -1,4 +1,3 @@
-/* Reset Dasar & Font */
 * {
     margin: 0;
     padding: 0;
@@ -12,13 +11,11 @@ body {
     padding: 30px;
 }
 
-/* Container utama halaman */
 .container {
     max-width: 1000px;
     margin: 0 auto;
 }
 
-/* Kotak untuk Form Login & CRUD */
 .auth-container, .form-container {
     max-width: 450px;
     margin: 60px auto;
@@ -37,7 +34,6 @@ h1 {
     text-align: center;
 }
 
-/* Desain Inputan Form */
 .form-group {
     margin-bottom: 20px;
 }
@@ -65,7 +61,6 @@ h1 {
     border-color: #4ade80;
 }
 
-/* Tombol Utama (Hijau khas Cuan) */
 .btn {
     display: inline-block;
     width: 100%;
@@ -87,7 +82,6 @@ h1 {
     color: white;
 }
 
-/* Tombol Hapus / Logout (Merah) */
 .btn-danger {
     background-color: #ef4444;
     color: white;
@@ -102,7 +96,6 @@ h1 {
     background-color: #dc2626;
 }
 
-/* Tombol Batal / Kembali (Abu-abu) */
 .btn-secondary {
     background-color: #4b5563;
     color: white;
@@ -113,7 +106,6 @@ h1 {
     background-color: #374151;
 }
 
-/* Bagian Header Dashboard */
 header {
     display: flex;
     justify-content: space-between;
@@ -124,7 +116,6 @@ header {
     border-radius: 12px;
 }
 
-/* Desain Tabel Data Investasi */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -153,7 +144,6 @@ tr:hover {
     background-color: #2d2d3f;
 }
 
-/* Status profit positif */
 .cuan {
     color: #4ade80;
     font-weight: bold;

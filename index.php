@@ -1,13 +1,12 @@
 <?php
 session_start();
-// Proteksi: Jika belum login, tendang balik ke login.php
+
 if (!isset($_SESSION['login'])) {
     header("Location: login.php");
     exit;
 }
 require 'config/koneksi.php';
 
-// Ambil data asli dari MySQL
 $result = mysqli_query($conn, "SELECT * FROM investasi_barang ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
