@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // ==========================================================================
-    // 1. INTEGRASI VALIDASI FORM INVESTASI (ASLI TIM KELOMPOK)
-    // ==========================================================================
+
     const formTambah = document.getElementById('tambahForm');
     const formEdit = document.getElementById('editForm');
 
@@ -32,9 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ==========================================================================
-    // 2. LOGIKA UTUH SAKELAR TEMA (SINKRONISASI DARK & LIGHT MODE)
-    // ==========================================================================
+
     const themeToggleBtn = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
