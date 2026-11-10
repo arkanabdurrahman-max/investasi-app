@@ -5,10 +5,46 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ==========================================================================
+   VARIABEL MAPPING WARNA UTK BULANAN DUA TEMA (LIGHT MODE DEFAULT)
+   ========================================================================== */
+:root {
+    --bg-primary: #f4f6f9;
+    --bg-card: #ffffff;
+    --text-main: #1a1a24;
+    --text-muted: #666666;
+    --border-color: #dddddd;
+    --brand-color: #16a34a;       /* Hijau aksen cerah */
+    --brand-hover: #15803d;
+    --toggle-btn-bg: #e5e7eb;
+    --table-header: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   VARIABEL MAPPING WARNA KHUSUS UNTUK DARK MODE
+   ========================================================================== */
+body.dark-mode {
+    --bg-primary: #1a1a24;        /* Warna gelap bawaan asli tim kelompok */
+    --bg-card: #242432;           /* Warna card asli kelompok */
+    --text-main: #ffffff;
+    --text-muted: #9ca3af;
+    --border-color: #374151;
+    --brand-color: #4ade80;       /* Warna hijau terang asli kelompok */
+    --brand-hover: #22c55e;
+    --toggle-btn-bg: #4b5563;
+    --table-header: #2d2d3f;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   IMPLEMENTASI GAYA VISUAL DINAMIS
+   ========================================================================== */
 body {
-    background-color: #1a1a24;
-    color: #ffffff;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
     padding: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -16,18 +52,27 @@ body {
     margin: 0 auto;
 }
 
-.auth-container, .form-container {
+.auth-container, .form-container, .login-container, .main-dashboard {
     max-width: 450px;
     margin: 60px auto;
-    background-color: #242432;
+    background-color: var(--bg-card);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-h1 {
-    color: #4ade80;
+/* Penyesuaian Dashboard Lebar */
+.main-dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: var(--brand-color);
     margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
 .text-center {
@@ -41,32 +86,33 @@ h1 {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #9ca3af;
+    color: var(--text-muted);
     font-size: 14px;
 }
 
-.form-group input {
+.form-group input, input[type="text"], input[type="password"] {
     width: 100%;
     padding: 12px;
-    background-color: #1a1a24;
-    border: 1px solid #374151;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    color: white;
+    color: var(--text-main);
     font-size: 15px;
     transition: 0.3s;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: #4ade80;
+    border-color: var(--brand-color);
 }
 
-.btn {
+/* Button & Sakelar Kendali */
+.btn, button[type="submit"], .btn-primary {
     display: inline-block;
     width: 100%;
     padding: 12px;
-    background-color: #4ade80;
-    color: #1a1a24;
+    background-color: var(--brand-color);
+    color: var(--bg-primary);
     border: none;
     border-radius: 8px;
     font-size: 16px;
@@ -77,19 +123,38 @@ h1 {
     transition: 0.3s;
 }
 
-.btn:hover {
-    background-color: #22c55e;
-    color: white;
+/* Mengembalikan teks tombol hitam jika di mode dark-mode agar terbaca */
+body.dark-mode .btn, body.dark-mode button[type="submit"] {
+    color: #1a1a24;
+}
+
+.btn:hover, button[type="submit"]:hover, .btn-primary:hover {
+    background-color: var(--brand-hover);
+    color: #ffffff;
+}
+
+.theme-switch-btn {
+    background-color: var(--toggle-btn-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    width: auto; /* Tombol atas tidak melebar penuh */
+    transition: all 0.2s ease;
 }
 
 .btn-danger {
     background-color: #ef4444;
-    color: white;
+    color: white !important;
     padding: 6px 12px;
     border-radius: 6px;
     text-decoration: none;
     font-size: 13px;
     transition: 0.3s;
+    display: inline-block;
+    width: auto;
 }
 
 .btn-danger:hover {
@@ -111,37 +176,40 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    background-color: #242432;
+    background-color: var(--bg-card);
     padding: 20px;
     border-radius: 12px;
+    border: 1px solid var(--border-color);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #242432;
+    background-color: var(--bg-card);
     border-radius: 12px;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 th, td {
     padding: 15px;
     text-align: left;
+    color: var(--text-main);
 }
 
 th {
-    background-color: #2d2d3f;
-    color: #4ade80;
+    background-color: var(--table-header);
+    color: var(--brand-color);
     font-size: 14px;
     text-transform: uppercase;
 }
 
 tr {
-    border-bottom: 1px solid #374151;
+    border-bottom: 1px solid var(--border-color);
 }
 
 tr:hover {
-    background-color: #2d2d3f;
+    background-color: var(--table-header);
 }
 
 .cuan {
