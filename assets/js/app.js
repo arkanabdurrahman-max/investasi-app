@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     
     // ==========================================================================
-    // LOGIKA INTEGRASI VALIDASI FORM UTARA (ASLI KELOMPOK)
+    // 1. INTEGRASI VALIDASI FORM INVESTASI (ASLI TIM KELOMPOK)
     // ==========================================================================
     const formTambah = document.getElementById('tambahForm');
     const formEdit = document.getElementById('editForm');
@@ -33,24 +33,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ==========================================================================
-    // SINKRONISASI AKTIF DARK MODE DAN LIGHT MODE
+    // 2. LOGIKA UTUH SAKELAR TEMA (SINKRONISASI DARK & LIGHT MODE)
     // ==========================================================================
     const themeToggleBtn = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
-    // 1. Deteksi otomatis status awal saat halaman dibuka
+    // Deteksi awal saat halaman pertama kali dibuka
     if (currentTheme === 'dark') {
         document.body.classList.add('dark-mode');
         if (themeToggleBtn) themeToggleBtn.innerText = "☀️ Light Mode";
     } else {
-        // Light mode sebagai default
         document.body.classList.remove('dark-mode');
         if (themeToggleBtn) themeToggleBtn.innerText = "🌙 Dark Mode";
     }
 
-    // 2. Operasi penukaran kelas warna ketika tombol di-klik
+    // Aksi ketika tombol sakelar tema diklik oleh user/dosen
     if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
+        themeToggleBtn.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
 
             let theme = 'light';
@@ -61,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 themeToggleBtn.innerText = "🌙 Dark Mode";
             }
 
-            // Menyimpan ke local storage browser agar permanen saat pindah file .php
+            // Simpan preferensi agar tema tidak berubah saat pindah halaman PHP
             localStorage.setItem('theme', theme);
         });
     }
