@@ -5,41 +5,33 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ==========================================================================
-   VARIABEL MAPPING WARNA UTK BULANAN DUA TEMA (LIGHT MODE DEFAULT)
-   ========================================================================== */
+
 :root {
     --bg-primary: #f4f6f9;
     --bg-card: #ffffff;
     --text-main: #1a1a24;
     --text-muted: #666666;
     --border-color: #dddddd;
-    --brand-color: #16a34a;       /* Hijau aksen cerah */
+    --brand-color: #16a34a;       
     --brand-hover: #15803d;
     --toggle-btn-bg: #e5e7eb;
     --table-header: #e5e7eb;
     --shadow-color: rgba(0, 0, 0, 0.05);
 }
 
-/* ==========================================================================
-   VARIABEL MAPPING WARNA KHUSUS UNTUK DARK MODE
-   ========================================================================== */
 body.dark-mode {
-    --bg-primary: #1a1a24;        /* Warna gelap bawaan asli tim kelompok */
-    --bg-card: #242432;           /* Warna card asli kelompok */
+    --bg-primary: #1a1a24;        
+    --bg-card: #242432;           
     --text-main: #ffffff;
     --text-muted: #9ca3af;
     --border-color: #374151;
-    --brand-color: #4ade80;       /* Warna hijau terang asli kelompok */
+    --brand-color: #4ade80;       
     --brand-hover: #22c55e;
     --toggle-btn-bg: #4b5563;
     --table-header: #2d2d3f;
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-/* ==========================================================================
-   IMPLEMENTASI GAYA VISUAL DINAMIS
-   ========================================================================== */
 body {
     background-color: var(--bg-primary);
     color: var(--text-main);
