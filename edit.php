@@ -4,7 +4,8 @@ if (!isset($_SESSION['login'])) { header("Location: login.php"); exit; }
 require 'config/koneksi.php';
 
 $id = intval($_GET['id']);
-$result = mysqli_query($conn, "SELECT * FROM investasi_barang WHERE id = $id");
+$user_id = intval($_SESSION['user_id']);
+$result = mysqli_query($conn, "SELECT * FROM investasi_barang WHERE id = $id AND user_id = $user_id");
 $row = mysqli_fetch_assoc($result);
 
 if (!$row) { header("Location: index.php"); exit; }
@@ -15,7 +16,7 @@ if (isset($_POST['update'])) {
     $harga_beli = intval($_POST['harga_beli']);
     $harga_sekarang = intval($_POST['harga_sekarang']);
 
-    $query = "UPDATE investasi_barang SET nama_barang='$nama', kategori='$kategori', harga_beli=$harga_beli, harga_sekarang=$harga_sekarang WHERE id=$id";
+    $query = "UPDATE investasi_barang SET nama_barang='$nama', kategori='$kategori', harga_beli=$harga_beli, harga_sekarang=$harga_sekarang WHERE id=$id AND user_id=$user_id";
     
     if (mysqli_query($conn, $query)) {
         echo "<script>alert('Data berhasil diubah!'); window.location.href='index.php';</script>";

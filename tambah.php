@@ -4,13 +4,14 @@ if (!isset($_SESSION['login'])) { header("Location: login.php"); exit; }
 require 'config/koneksi.php';
 
 if (isset($_POST['submit'])) {
+    $user_id = intval($_SESSION['user_id']);
     $nama = mysqli_real_escape_string($conn, $_POST['nama_barang']);
     $kategori = mysqli_real_escape_string($conn, $_POST['kategori']);
     $harga_beli = intval($_POST['harga_beli']);
     $harga_sekarang = intval($_POST['harga_sekarang']);
 
     mysqli_query($conn, "ALTER TABLE investasi_barang AUTO_INCREMENT = 1");
-    $query = "INSERT INTO investasi_barang (nama_barang, kategori, harga_beli, harga_sekarang) VALUES ('$nama', '$kategori', $harga_beli, $harga_sekarang)";
+    $query = "INSERT INTO investasi_barang (user_id, nama_barang, kategori, harga_beli, harga_sekarang) VALUES ($user_id, '$nama', '$kategori', $harga_beli, $harga_sekarang)";
     
     if (mysqli_query($conn, $query)) {
         echo "<script>alert('Aset berhasil disimpan!'); window.location.href='index.php';</script>";

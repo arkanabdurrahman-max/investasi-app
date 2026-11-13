@@ -1,7 +1,5 @@
 <?php 
 session_start();
-
-// 1. Muat koneksi database paling awal
 require_once 'config/koneksi.php';
 
 if (isset($_SESSION['login'])) {
@@ -12,20 +10,18 @@ if (isset($_SESSION['login'])) {
 $error = false;
 
 if (isset($_POST['submit'])) {
-    // 2. Menggunakan variabel $conn yang sesuai dengan file koneksi.php
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = $_POST['password'];
 
-    // QUERY DATABASE ASLI TIM KELOMPOK
     $query = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
 
-        // Membaca kueri password database asli secara langsung
-        if ((md5($password)) === $row['password']) {
+        if (md5($password) === $row['password']) {
             $_SESSION['login'] = true;
+            $_SESSION['user_id'] = $row['id']; 
             $_SESSION['user'] = $row['username'];
             header("Location: index.php");
             exit;
@@ -47,7 +43,6 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 
-    <!-- Tombol Sakelar Tema -->
     <div style="text-align: right; padding: 20px;">
         <button id="theme-toggle" class="theme-switch-btn">🌙 Dark Mode</button>
     </div>
@@ -72,6 +67,10 @@ if (isset($_POST['submit'])) {
 
             <button type="submit" name="submit" style="width: 100%; padding: 12px; font-size: 16px;">Login</button>
         </form>
+
+        <p style="text-align: center; margin-top: 15px; font-size: 14px;">
+            Belum punya akun? <a href="register.php" style="color: #3b82f6; font-weight: bold; text-decoration: none;">Daftar Akun</a>
+        </p>
     </div>
 
     <script src="assets/js/app.js"></script>

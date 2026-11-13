@@ -52,20 +52,21 @@ require_once 'config/koneksi.php';
                     <th style="text-align: center;">Aksi Operasional</th>
                 </tr>
             </thead>
-            <tbody>
+                        <tbody>
                 <?php
-                // SINKRONISASI: Mengubah nama kueri tabel menjadi investasi_barang sesuai database asli
-                $query = "SELECT * FROM investasi_barang";
+                $user_id = intval($_SESSION['user_id']);
+                // Hanya tampilkan data milik akun yang sedang login
+                $query = "SELECT * FROM investasi_barang WHERE user_id = $user_id ORDER BY id ASC";
                 $result = mysqli_query($conn, $query);
 
                 if ($result && mysqli_num_rows($result) > 0) {
+                    $no = 1; // Nomor urut tabel per akun mulai dari 1
                     while ($row = mysqli_fetch_assoc($result)) {
-                        // Kalkulasi nilai investasi saat ini dikurangi harga beli awal
                         $selisih = $row['harga_sekarang'] - $row['harga_beli'];
                         $status_cuan = ($selisih >= 0) ? "cuan" : "";
                         
                         echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $no++ . "</td>";
                         echo "<td>" . htmlspecialchars($row['nama_barang']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['kategori']) . "</td>";
                         echo "<td>
@@ -79,7 +80,7 @@ require_once 'config/koneksi.php';
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='5' style='text-align: center; color: var(--text-muted);'>Belum ada data barang di dalam database.</td></tr>";
+                    echo "<tr><td colspan='5' style='text-align: center; color: var(--text-muted);'>Belum ada data barang untuk akun ini.</td></tr>";
                 }
                 ?>
             </tbody>
