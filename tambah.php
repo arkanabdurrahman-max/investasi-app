@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
     $harga_beli = intval($_POST['harga_beli']);
     $harga_sekarang = intval($_POST['harga_sekarang']);
 
+    mysqli_query($conn, "ALTER TABLE investasi_barang AUTO_INCREMENT = 1");
     $query = "INSERT INTO investasi_barang (nama_barang, kategori, harga_beli, harga_sekarang) VALUES ('$nama', '$kategori', $harga_beli, $harga_sekarang)";
     
     if (mysqli_query($conn, $query)) {

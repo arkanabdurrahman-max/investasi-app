@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_assoc($result);
 
         // Membaca kueri password database asli secara langsung
-        if ($password === $row['password']) {
+        if ((md5($password)) === $row['password']) {
             $_SESSION['login'] = true;
             $_SESSION['user'] = $row['username'];
             header("Location: index.php");

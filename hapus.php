@@ -5,6 +5,11 @@ require 'config/koneksi.php';
 
 $id = intval($_GET['id']);
 if (mysqli_query($conn, "DELETE FROM investasi_barang WHERE id = $id")) {
+    mysqli_query($conn, "SET @num := 0");
+    mysqli_query($conn, "UPDATE investasi_barang SET id = @num := (@num + 1)");
+    mysqli_query($conn, "ALTER TABLE investasi_barang AUTO_INCREMENT = 1");
+
     header("Location: index.php");
+    exit;
 }
 ?>
