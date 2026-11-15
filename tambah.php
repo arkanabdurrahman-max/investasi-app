@@ -18,7 +18,6 @@ if (isset($_POST['submit'])) {
         $nama_foto = time() . "_" . uniqid() . "." . $ekstensi;
         move_uploaded_file($_FILES['foto']['tmp_name'], "assets/img/" . $nama_foto);
     }
-
     mysqli_query($conn, "ALTER TABLE investasi_barang AUTO_INCREMENT = 1");
     $query = "INSERT INTO investasi_barang (user_id, nama_barang, kategori, foto, harga_pokok, harga_beli, harga_sekarang, keterangan) 
               VALUES ($user_id, '$nama', '$kategori', '$nama_foto', $harga_pokok, $harga_beli, $harga_sekarang, '$keterangan')";
