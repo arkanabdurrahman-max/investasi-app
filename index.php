@@ -1,11 +1,13 @@
 <?php 
 session_start();
 
+// Proteksi Sesi Ketat
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     header("Location: login.php");
     exit;
 }
 
+// Mekanisme Keamanan Cache Kontrol setelah Logout
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
@@ -23,7 +25,7 @@ $user_id = intval($_SESSION['user_id']);
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         html { scroll-behavior: smooth; }
-        .nav-links { display: flex; gap: 20px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: inherit; font-weight: 600; font-size: 14px; }
         .nav-links a:hover { color: #3b82f6; }
         .grid-pasar { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
@@ -35,13 +37,14 @@ $user_id = intval($_SESSION['user_id']);
 
     <!-- Navbar Utama -->
     <header>
-        <h2>Aplikasi Investasi Barang (IB)</h2>
-        
-        <nav class="nav-links">
-            <a href="#aset-saya">Aset Saya</a>
-            <a href="#pasar-tawar">Pasar Tawar</a>
-            <a href="#tawaran-masuk">Tawaran Masuk</a>
-        </nav>
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <h2 style="margin: 0;">Aplikasi Investasi Barang (IB)</h2>
+            <nav class="nav-links">
+                <a href="#aset-saya">Aset Saya</a>
+                <a href="#pasar-tawar">Pasar Tawar</a>
+                <a href="#tawaran-masuk">Tawaran Masuk</a>
+            </nav>
+        </div>
 
         <div style="display: flex; gap: 20px; align-items: center;">
             <span>Selamat Datang, <strong><?php echo htmlspecialchars($_SESSION['user']); ?></strong></span>
@@ -171,13 +174,25 @@ $user_id = intval($_SESSION['user_id']);
                             echo "<td>" . htmlspecialchars($tw['status']) . "</td>";
                             echo "<td style='text-align: center;'>";
                             if ($tw['status'] === 'Pending') {
-                                echo "<a href='tawar.php?aksi=terima&id=" . $tw['id'] . "' style='color: #10b981; font-weight: 600; text-decoration: none; margin-right: 10px;'>Terima</a>";
-                                echo "<a href='tawar.php?aksi=tolak&id=" . $tw['id'] . "' style='color: #ef4444; font-weight: 600; text-decoration: none;'>Tolak</a>";
+                            echo "<a href='tawar.php?aksi=terima&id=" . $tw['id'] . "' style='color: #10b981; font-weight: 600; text-decoration: none; margin-right: 10px;'>Terima";
+                            echo "<a href='tawar.php?aksi=tolak&id=" . $tw['id'] . "' style='color: #ef4444; font-weight: 600; text-decoration: none;'>Tolak";
+                            } else {
+                            echo "Selesai";
                             }
-                            echo "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='6' style='text-align: center; color: var(--text-muted);'>Tidak ada tawaran masuk.</td></tr>";
-                    }
-                    ?>
+                            echo "";
+                            echo "";
+                            }
+                            } else {
+                            echo "Tidak ada tawaran masuk.";
+                            }
+                            ?>
+                        </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <!-- INI PEMANGGIL JS DARK MODE-NYA -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
