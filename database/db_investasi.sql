@@ -1,24 +1,34 @@
-CREATE DATABASE IF NOT EXISTS db_investasi;
-USE db_investasi;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+07:00";
 
--- 1. Tabel users
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
 
-INSERT INTO users (id, username, password) VALUES 
-(1, 'admin', MD5('admin123'));
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 2. Tabel investasi_barang
-DROP TABLE IF EXISTS investasi_barang;
-CREATE TABLE investasi_barang (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    nama_barang VARCHAR(100) NOT NULL,
-    kategori VARCHAR(50) NOT NULL,
-    harga_beli INT NOT NULL,
-    harga_sekarang INT NOT NULL
-);
+-- Contoh akun bawaan (Username: admin | Password: 123)
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'admin', '202cb962ac59075b964b07152d234b70');
+
+
+CREATE TABLE IF NOT EXISTS `investasi_barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `nama_barang` varchar(100) NOT NULL,
+  `kategori` varchar(50) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `harga_pokok` int(11) NOT NULL,
+  `harga_beli` int(11) NOT NULL,
+  `harga_sekarang` int(11) NOT NULL,
+  `keterangan` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `fk_user_investasi` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+COMMIT;
