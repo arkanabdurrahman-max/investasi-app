@@ -172,3 +172,12 @@ $user_id = intval($_SESSION['user_id']);
                             echo "<td style='text-align: center;'>";
                             if ($tw['status'] === 'Pending') {
                                 echo "<a href='tawar.php?aksi=terima&id=" . $tw['id'] . "' style='color: #10b981; font-weight: 600; text-decoration: none; margin-right: 10px;'>Terima</a>";
+                                echo "<a href='tawar.php?aksi=tolak&id=" . $tw['id'] . "' style='color: #ef4444; font-weight: 600; text-decoration: none;'>Tolak</a>";
+                            }
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6' style='text-align: center; color: var(--text-muted);'>Tidak ada tawaran masuk.</td></tr>";
+                    }
+                    ?>
