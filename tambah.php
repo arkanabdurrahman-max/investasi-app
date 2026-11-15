@@ -12,13 +12,11 @@ if (isset($_POST['submit'])) {
     $harga_sekarang = intval($_POST['harga_sekarang']);
     $keterangan = mysqli_real_escape_string($conn, $_POST['keterangan']);
 
-    // Proses Upload Foto
     $nama_foto = "";
     if (!empty($_FILES['foto']['name'])) {
         $ekstensi = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
         $nama_foto = time() . "_" . uniqid() . "." . $ekstensi;
-        $tujuan = "assets/img/" . $nama_foto;
-        move_uploaded_file($_FILES['foto']['tmp_name'], $tujuan);
+        move_uploaded_file($_FILES['foto']['tmp_name'], "assets/img/" . $nama_foto);
     }
 
     mysqli_query($conn, "ALTER TABLE investasi_barang AUTO_INCREMENT = 1");

@@ -17,11 +17,9 @@ if (isset($_POST['update'])) {
     $harga_beli = intval($_POST['harga_beli']);
     $harga_sekarang = intval($_POST['harga_sekarang']);
     $keterangan = mysqli_real_escape_string($conn, $_POST['keterangan']);
-    $nama_foto = $row['foto']; // Default pakai foto lama
+    $nama_foto = $row['foto'];
 
-    // Jika user mengunggah foto baru
     if (!empty($_FILES['foto']['name'])) {
-        // Hapus foto lama jika ada di folder
         if (!empty($row['foto']) && file_exists("assets/img/" . $row['foto'])) {
             unlink("assets/img/" . $row['foto']);
         }
